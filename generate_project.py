@@ -4,7 +4,7 @@ from pathlib import Path
 PROJECT_ROOT = Path(".")
 
 FILES = {
-    "settings.gradle.kts": """pluginManagement {
+    "settings.gradle.kts": r"""pluginManagement {
     repositories {
         google()
         mavenCentral()
@@ -22,13 +22,13 @@ rootProject.name = "KadrPoses"
 include(":app")
 """,
 
-    "gradle.properties": """org.gradle.jvmargs=-Xmx3072m -Dfile.encoding=UTF-8
+    "gradle.properties": r"""org.gradle.jvmargs=-Xmx3072m -Dfile.encoding=UTF-8
 android.useAndroidX=true
 kotlin.code.style=official
 android.nonTransitiveRClass=true
 """,
 
-    "build.gradle.kts": """plugins {
+    "build.gradle.kts": r"""plugins {
     alias(libs.plugins.android.application) apply false
     alias(libs.plugins.kotlin.android) apply false
     alias(libs.plugins.kotlin.compose) apply false
@@ -38,7 +38,7 @@ android.nonTransitiveRClass=true
 }
 """,
 
-    "gradle/libs.versions.toml": """[versions]
+    "gradle/libs.versions.toml": r"""[versions]
 agp = "8.7.2"
 kotlin = "2.0.21"
 ksp = "2.0.21-1.0.27"
@@ -99,7 +99,7 @@ ksp = { id = "com.google.devtools.ksp", version.ref = "ksp" }
 hilt = { id = "com.google.dagger.hilt.android", version.ref = "hilt" }
 """,
 
-    "app/build.gradle.kts": """plugins {
+    "app/build.gradle.kts": r"""plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
@@ -175,21 +175,21 @@ dependencies {
 }
 """,
 
-    "app/proguard-rules.pro": """-keepattributes *Annotation*,InnerClasses
+    "app/proguard-rules.pro": r"""-keepattributes *Annotation*,InnerClasses
 -dontnote kotlinx.serialization.AnnotationsKt
 -keep,includedescriptorclasses class com.kadr.poses.**$$serializer { *; }
 -keepclassmembers class com.kadr.poses.** { *** Companion; }
 -keepclasseswithmembers class com.kadr.poses.** { kotlinx.serialization.KSerializer serializer(...); }
 """,
 
-    "app/src/main/res/xml/locales_config.xml": """<?xml version="1.0" encoding="utf-8"?>
+    "app/src/main/res/xml/locales_config.xml": r"""<?xml version="1.0" encoding="utf-8"?>
 <locale-config xmlns:android="http://schemas.android.com/apk/res/android">
     <locale android:name="en" />
     <locale android:name="ar" />
 </locale-config>
 """,
 
-    "app/src/main/AndroidManifest.xml": """<?xml version="1.0" encoding="utf-8"?>
+    "app/src/main/AndroidManifest.xml": r"""<?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android">
     <application
         android:name=".KadrApplication"
@@ -218,7 +218,7 @@ dependencies {
 </manifest>
 """,
 
-    "app/src/main/res/values/strings.xml": """<resources>
+    "app/src/main/res/values/strings.xml": r"""<resources>
     <string name="app_name">Kadr</string>
     <string name="nav_home">Home</string>
     <string name="nav_poses">Poses</string>
@@ -301,7 +301,7 @@ dependencies {
 </resources>
 """,
 
-    "app/src/main/res/values-ar/strings.xml": """<resources>
+    "app/src/main/res/values-ar/strings.xml": r"""<resources>
     <string name="app_name">كادر</string>
     <string name="nav_home">الرئيسية</string>
     <string name="nav_poses">الوضعيات</string>
@@ -384,7 +384,7 @@ dependencies {
 </resources>
 """,
 
-    "app/src/main/assets/poses_seed.json": """[
+    "app/src/main/assets/poses_seed.json": r"""[
   {
     "id": "pose_01",
     "assetName": "pose_01",
@@ -549,396 +549,11 @@ dependencies {
       "backgroundTint": "MIST"
     },
     "imageGenerationPrompt": "Flat vector solo bride over shoulder on #2F343A."
-  },
-  {
-    "id": "pose_04",
-    "assetName": "pose_04",
-    "nameAr": "استراحة السلم الكلاسيكي",
-    "nameEn": "Grand Staircase Lounge",
-    "shortDescriptionAr": "جلسة غير متماثلة على الدرج تمنح طابعاً سينمائياً فخماً ومريحاً.",
-    "shortDescriptionEn": "Asymmetrical seated pose on steps for an effortless editorial look.",
-    "category": "SITTING",
-    "subject": "COUPLE",
-    "difficulty": "MEDIUM",
-    "moodTags": ["CINEMATIC", "EDITORIAL"],
-    "locationTags": ["INDOOR"],
-    "bestForDressSilhouettesAr": ["قصة A-Line", "فستان ملكي واسع"],
-    "bestForDressSilhouettesEn": ["A-Line", "Ballgown"],
-    "stepsAr": [
-      "تجلس العروس على درجة السلم مع فرد طيات الفستان.",
-      "يجلس العريس على الدرجة الأعلى خلفها بقليل.",
-      "يسند العريس مرفقه على ركبته ويميل نحو العروس.",
-      "تتكئ العروس بكتفها على ساق العريس وتضع الباقة في حجرها.",
-      "يتبادلان نظرة هادئة من زاوية جانبية."
-    ],
-    "stepsEn": [
-      "Bride sits on a step with skirt draped over the lower stair.",
-      "Groom sits one step higher behind her.",
-      "Groom rests elbow on his knee, leaning toward the bride.",
-      "Bride leans her shoulder against groom's leg.",
-      "Both share a calm profile gaze."
-    ],
-    "photographerTips": {
-      "angleAr": "من مستوى الدرجة السفلية",
-      "angleEn": "Low angle from lower step",
-      "lensMm": "50mm",
-      "distanceAr": "2.5 متر",
-      "distanceEn": "2.5m",
-      "lightingAr": "إضاءة علوية دافئة",
-      "lightingEn": "Warm overhead light",
-      "compositionAr": "تكوين مثلثي",
-      "compositionEn": "Triangular composition",
-      "suggestedAperture": "f/2.2",
-      "suggestedShutter": "1/200s"
-    },
-    "propsAr": ["باقة زهور بيضاء"],
-    "propsEn": ["White floral bouquet"],
-    "commonMistakesAr": ["انحناء الظهر أثناء الجلوس.", "تكدس الفستان تحت القدمين."],
-    "commonMistakesEn": ["Slouching lower back.", "Bunching dress fabric."],
-    "directorCueAr": "اجلسا براحة على الدرج، افردي فستانك على الدرجة السفلية واتكئي بكتفك على العريس.",
-    "directorCueEn": "Sit comfortably on the steps, drape your skirt down, and lean back against his shoulder.",
-    "illustrationSpec": {
-      "framing": "Three-quarter seated portrait",
-      "figuresPosition": "Couple seated on stairs",
-      "colorPalette": ["#2F343A", "#FFFFFF", "#C8C9CD", "#F2A7A7"],
-      "backgroundTint": "MIST"
-    },
-    "imageGenerationPrompt": "Flat vector seated wedding couple on #2F343A."
-  },
-  {
-    "id": "pose_05",
-    "assetName": "pose_05",
-    "nameAr": "نسيم الطرحة الذهبي",
-    "nameEn": "Golden Hour Veil Breeze",
-    "shortDescriptionAr": "وقفة شاعرية للعروس ترفع فيها طرف الطرحة أو التاج لتلتقط حركة الهواء.",
-    "shortDescriptionEn": "Poetic solo bride pose touching floral crown in the breeze.",
-    "category": "STANDING",
-    "subject": "BRIDE_SOLO",
-    "difficulty": "MEDIUM",
-    "moodTags": ["ROMANTIC", "CINEMATIC"],
-    "locationTags": ["OUTDOOR"],
-    "bestForDressSilhouettesAr": ["قصة الحورية", "قصة A-Line"],
-    "bestForDressSilhouettesEn": ["Mermaid", "A-Line"],
-    "stepsAr": [
-      "تقف العروس في مواجهة النسيم بزاوية 30 درجة.",
-      "تمسك الباقة بيدها اليمنى عند مستوى الحوض.",
-      "ترفع يدها اليسرى بلطف لتلامس تاج الزهور.",
-      "تغمض عينيها بسلام.",
-      "تأخذ نفساً عميقاً بابتسامة خفيفة."
-    ],
-    "stepsEn": [
-      "Bride stands angled 30 degrees into the breeze.",
-      "Holds bouquet at hip level with right hand.",
-      "Gently raises left hand to touch floral crown.",
-      "Closes eyes peacefully.",
-      "Takes a deep breath with a soft smile."
-    ],
-    "photographerTips": {
-      "angleAr": "مستوى الصدر",
-      "angleEn": "Chest-level",
-      "lensMm": "85mm",
-      "distanceAr": "2 متر",
-      "distanceEn": "2m",
-      "lightingAr": "أشعة غروب خلفية",
-      "lightingEn": "Sunset backlight",
-      "compositionAr": "ترك مساحة فارغة في اتجاه النظر",
-      "compositionEn": "Negative space in gaze direction",
-      "suggestedAperture": "f/1.8",
-      "suggestedShutter": "1/800s"
-    },
-    "propsAr": ["تاج زهور", "باقة أقحوان"],
-    "propsEn": ["Floral crown", "Daisy bouquet"],
-    "commonMistakesAr": ["شد الأصابع بقوة.", "تقطيب الحاجبين من الشمس."],
-    "commonMistakesEn": ["Stiff fingers.", "Squinting into harsh sun."],
-    "directorCueAr": "ارفعي يدك بلمسة خفيفة نحو تاج الزهور، أغمضي عينيك واستشعري نسمة الهواء.",
-    "directorCueEn": "Lightly touch your floral crown, close your eyes, and enjoy the breeze.",
-    "illustrationSpec": {
-      "framing": "Waist up",
-      "figuresPosition": "Solo bride touching floral crown",
-      "colorPalette": ["#2F343A", "#FFFFFF", "#FCE0D2", "#F2A7A7"],
-      "backgroundTint": "BLUSH"
-    },
-    "imageGenerationPrompt": "Flat vector solo bride touching crown on #2F343A."
-  },
-  {
-    "id": "pose_06",
-    "assetName": "pose_06",
-    "nameAr": "همسة الجبين المتقارب",
-    "nameEn": "Forehead Rest & Whisper",
-    "shortDescriptionAr": "تلامس الجبينين في لقطة قريبة تركز على المشاعر الصادقة والهدوء.",
-    "shortDescriptionEn": "Intimate forehead-to-forehead close-up focusing on quiet emotion.",
-    "category": "CLOSE_UP",
-    "subject": "COUPLE",
-    "difficulty": "EASY",
-    "moodTags": ["ROMANTIC"],
-    "locationTags": ["OUTDOOR", "INDOOR"],
-    "bestForDressSilhouettesAr": ["جميع القصات", "ياقة القلب"],
-    "bestForDressSilhouettesEn": ["All Silhouettes", "Sweetheart Neckline"],
-    "stepsAr": [
-      "يقف العروسان متقابلين وجهاً لوجه بمسافة قريبة.",
-      "يضع العريس يده في جيبه واليد الأخرى خلف خصر العروس.",
-      "تضع العروس يدها بلطف على طية سترة العريس الرمادية.",
-      "يميلان برأسيهما حتى يتلامس الجبينان برفق.",
-      "يغمض العروسان أعينهما مع ابتسامة دافئة."
-    ],
-    "stepsEn": [
-      "Couple stands facing each other closely.",
-      "Groom keeps one hand in pocket, other on bride's waist.",
-      "Bride rests her hand lightly on groom's gray lapel.",
-      "Both lean forward until foreheads gently touch.",
-      "Both close their eyes with a warm smile."
-    ],
-    "photographerTips": {
-      "angleAr": "مستوى العين تماماً",
-      "angleEn": "Strict eye-level",
-      "lensMm": "85mm",
-      "distanceAr": "1.2 متر",
-      "distanceEn": "1.2m",
-      "lightingAr": "إضاءة ناعمة متساوية",
-      "lightingEn": "Even diffused light",
-      "compositionAr": "ملء الكادر بالوجهين والأكتاف",
-      "compositionEn": "Tight framing on faces",
-      "suggestedAperture": "f/2.4",
-      "suggestedShutter": "1/400s"
-    },
-    "propsAr": ["باقة زهور صغيرة"],
-    "propsEn": ["Small floral bouquet"],
-    "commonMistakesAr": ["تصادم الأنوف.", "إخفاء اليدين بالكامل."],
-    "commonMistakesEn": ["Bumping noses.", "Hiding hands out of frame."],
-    "directorCueAr": "اقتربا حتى يتلامس جبيناكما، ضعي يدك على صدره وأغمضا أعينكما لثانية هادئة.",
-    "directorCueEn": "Lean in until your foreheads touch, rest your hand on his lapel, and close your eyes.",
-    "illustrationSpec": {
-      "framing": "Tight chest-up close-up",
-      "figuresPosition": "Forehead touch close-up",
-      "colorPalette": ["#2F343A", "#FFFFFF", "#C8C9CD", "#F2A7A7"],
-      "backgroundTint": "BLUSH"
-    },
-    "imageGenerationPrompt": "Flat vector couple forehead touch on #2F343A."
-  },
-  {
-    "id": "pose_07",
-    "assetName": "pose_07",
-    "nameAr": "انسياب الطيات وباقة الأقحوان",
-    "nameEn": "Pleated Skirt & Daisy Bouquet",
-    "shortDescriptionAr": "لقطة تفصيلية فنية ليدي العروس وهما تحتضنان باقة الزهور فوق طيات الفستان.",
-    "shortDescriptionEn": "Artistic detail shot of bride's hands cradling the bouquet against pleated skirt.",
-    "category": "CLOSE_UP",
-    "subject": "DETAILS",
-    "difficulty": "EASY",
-    "moodTags": ["ROMANTIC", "EDITORIAL"],
-    "locationTags": ["INDOOR", "OUTDOOR"],
-    "bestForDressSilhouettesAr": ["تنورة بطيات", "قصة A-Line"],
-    "bestForDressSilhouettesEn": ["Pleated Skirt", "A-Line"],
-    "stepsAr": [
-      "تقف العروس بوضعية مستقيمة ومسترخية.",
-      "تمسك سيقان باقة الأقحوان البيضاء بكلتا يديها أمام الخصر.",
-      "تتشابك الأصابع برقة دون شد المفاصل.",
-      "تُمال الباقة قليلاً للأمام لإظهار الزهور.",
-      "يتم ترتيب طيات تنورة الفستان البيضاء خلف اليدين."
-    ],
-    "stepsEn": [
-      "Bride stands upright and relaxed.",
-      "Holds white daisy bouquet stems at waist.",
-      "Fingers overlap gently without tension.",
-      "Tilts bouquet slightly forward to show blooms.",
-      "Arranges white skirt pleats symmetrically."
-    ],
-    "photographerTips": {
-      "angleAr": "ميل خفيف من الأعلى 15 درجة",
-      "angleEn": "Slight 15-degree high angle",
-      "lensMm": "50mm",
-      "distanceAr": "0.8 متر",
-      "distanceEn": "0.8m",
-      "lightingAr": "إضاءة جانبية تبرز طيات الفستان",
-      "lightingEn": "Side light accentuating folds",
-      "compositionAr": "توسيط الباقة واليدين",
-      "compositionEn": "Center hands and bouquet",
-      "suggestedAperture": "f/2.8",
-      "suggestedShutter": "1/320s"
-    },
-    "propsAr": ["باقة زهور أقحوان بيضاء"],
-    "propsEn": ["White daisy bouquet"],
-    "commonMistakesAr": ["الضغط القوي على السيقان.", "توجيه الزهور للأسفل."],
-    "commonMistakesEn": ["Gripping stems tightly.", "Pointing flowers downward."],
-    "directorCueAr": "أمسكي الباقة برفق عند خصرك وأميلي الزهور قليلاً نحوي.",
-    "directorCueEn": "Cradle the bouquet softly at your waist and tilt the blooms toward the camera.",
-    "illustrationSpec": {
-      "framing": "Tight detail crop on hands and skirt",
-      "figuresPosition": "Hands holding daisy bouquet",
-      "colorPalette": ["#2F343A", "#FFFFFF", "#D0D3D8", "#FCE0D2"],
-      "backgroundTint": "SAND"
-    },
-    "imageGenerationPrompt": "Flat vector detail of bride hands holding daisy bouquet on #2F343A."
-  },
-  {
-    "id": "pose_08",
-    "assetName": "pose_08",
-    "nameAr": "دوران الفرح المعماري",
-    "nameEn": "The Spin & Laugh Dip",
-    "shortDescriptionAr": "حركة دوران مرحة تنشر تنورة الفستان وتلتقط ضحكة حقيقية بين العروسين.",
-    "shortDescriptionEn": "Joyful spin flaring the wedding skirt and capturing genuine laughter.",
-    "category": "WALKING",
-    "subject": "COUPLE",
-    "difficulty": "ADVANCED",
-    "moodTags": ["PLAYFUL", "CINEMATIC"],
-    "locationTags": ["OUTDOOR"],
-    "bestForDressSilhouettesAr": ["قصة A-Line", "تنورة واسعة"],
-    "bestForDressSilhouettesEn": ["A-Line", "Full Skirt"],
-    "stepsAr": [
-      "يقف العريس ثابتاً ويرفع يده اليسرى فوق رأس العروس.",
-      "تمسك العروس بيده وتدور ببطء تحت ذراعه.",
-      "تحمل العروس الباقة باليد الأخرى لتوازن الحركة.",
-      "يثبت العريس خصرها بيده اليمنى عند التوقف.",
-      "يتبادلان الضحك والنظر لبعضهما."
-    ],
-    "stepsEn": [
-      "Groom raises his left hand above bride's head.",
-      "Bride holds his hand and spins slowly underneath.",
-      "Bride holds bouquet out with free hand.",
-      "Groom steadies her waist mid-spin.",
-      "Both laugh looking at each other."
-    ],
-    "photographerTips": {
-      "angleAr": "منخفضة لإبراز طيران الفستان",
-      "angleEn": "Low angle for skirt flare",
-      "lensMm": "35mm",
-      "distanceAr": "3 أمتار",
-      "distanceEn": "3m",
-      "lightingAr": "إضاءة خارجية أو غروب",
-      "lightingEn": "Open shade or sunset",
-      "compositionAr": "التقاط متتابع سريع",
-      "compositionEn": "Continuous burst mode",
-      "suggestedAperture": "f/2.8",
-      "suggestedShutter": "1/1250s"
-    },
-    "propsAr": ["باقة زهور بيضاء"],
-    "propsEn": ["White floral bouquet"],
-    "commonMistakesAr": ["الدوران بسرعة مفرطة.", "رفع مرفق العريس أمام وجهه."],
-    "commonMistakesEn": ["Spinning too fast.", "Blocking face with raised arm."],
-    "directorCueAr": "ارفع يدك وأدرها ببطء دورة واحدة وكأنكما في رقصة هادئة، واضحكا معاً عند التوقف.",
-    "directorCueEn": "Raise your hand and spin her slowly under your arm, then laugh together.",
-    "illustrationSpec": {
-      "framing": "Three-quarter dynamic portrait",
-      "figuresPosition": "Groom spinning bride",
-      "colorPalette": ["#2F343A", "#FFFFFF", "#C8C9CD", "#F2A7A7"],
-      "backgroundTint": "SAGE"
-    },
-    "imageGenerationPrompt": "Flat vector groom spinning bride on #2F343A."
-  },
-  {
-    "id": "pose_09",
-    "assetName": "pose_09",
-    "nameAr": "هدوء مقعد النافذة",
-    "nameEn": "Window Seat Serenity",
-    "shortDescriptionAr": "جلسة أنيقة للعروس منفردة تبرز تفاصيل ياقة الفستان والأكمام المنفوخة.",
-    "shortDescriptionEn": "Graceful solo seated portrait highlighting the bodice and puff sleeves.",
-    "category": "SITTING",
-    "subject": "BRIDE_SOLO",
-    "difficulty": "MEDIUM",
-    "moodTags": ["EDITORIAL", "ROMANTIC"],
-    "locationTags": ["INDOOR"],
-    "bestForDressSilhouettesAr": ["أكمام منفوخة", "ياقة القلب"],
-    "bestForDressSilhouettesEn": ["Puff Sleeves", "Sweetheart Neckline"],
-    "stepsAr": [
-      "تجلس العروس على طرف مقعد منخفض مع استقامة الظهر.",
-      "تميل بركبتيها قليلاً نحو الجانب وترتب طيات الفستان.",
-      "تضع الباقة على حجرها وتمسكها بكلتا يديها.",
-      "تميل برأسها قليلاً نحو الكتف الأمامي.",
-      "تنظر نحو ضوء النافذة بابتسامة هادئة."
-    ],
-    "stepsEn": [
-      "Bride sits on front edge of a low seat with a tall back.",
-      "Angles knees to one side and fans the white skirt.",
-      "Rests the daisy bouquet gently on her lap.",
-      "Tilts head slightly toward front shoulder.",
-      "Gazes softly toward the window light."
-    ],
-    "photographerTips": {
-      "angleAr": "مستوى عين العروس وهي جالسة",
-      "angleEn": "Seated eye-level",
-      "lensMm": "50mm",
-      "distanceAr": "1.8 متر",
-      "distanceEn": "1.8m",
-      "lightingAr": "إضاءة نافذة جانبية كبيرة",
-      "lightingEn": "Large side window light",
-      "compositionAr": "تأطير عمودي متوازن",
-      "compositionEn": "Balanced vertical framing",
-      "suggestedAperture": "f/2.0",
-      "suggestedShutter": "1/250s"
-    },
-    "propsAr": ["تاج زهور", "باقة أقحوان"],
-    "propsEn": ["Floral crown", "Daisy bouquet"],
-    "commonMistakesAr": ["الجلوس في عمق الكرسي وتقوس الظهر.", "إخفاء الرقبة بين الكتفين."],
-    "commonMistakesEn": ["Slouching back into chair.", "Sinking neck."],
-    "directorCueAr": "اجلسي على طرف المقعد بظهر مستقيم، ضعي الباقة في حجرك وانظري بهدوء نحو النافذة.",
-    "directorCueEn": "Perch on the edge of the seat with a tall posture and look toward the window.",
-    "illustrationSpec": {
-      "framing": "Medium seated portrait",
-      "figuresPosition": "Solo bride seated gracefully",
-      "colorPalette": ["#2F343A", "#FFFFFF", "#FCE0D2", "#F2A7A7"],
-      "backgroundTint": "MIST"
-    },
-    "imageGenerationPrompt": "Flat vector seated solo bride on #2F343A."
-  },
-  {
-    "id": "pose_10",
-    "assetName": "pose_10",
-    "nameAr": "لمسة طية السترة والصديري",
-    "nameEn": "Lapel Fix & Vest Detail",
-    "shortDescriptionAr": "لقطة تفصيلية قريبة ليدي العروس وهما ترتبان طية سترة العريس الرمادية.",
-    "shortDescriptionEn": "Close-up detail of bride's hands adjusting groom's light-gray jacket lapel.",
-    "category": "CLOSE_UP",
-    "subject": "DETAILS",
-    "difficulty": "MEDIUM",
-    "moodTags": ["EDITORIAL"],
-    "locationTags": ["INDOOR", "STUDIO"],
-    "bestForDressSilhouettesAr": ["أكمام منفوخة", "جميع القصات"],
-    "bestForDressSilhouettesEn": ["Puff Sleeves", "All Silhouettes"],
-    "stepsAr": [
-      "يقف العروسان متقابلين بمسافة قريبة جداً.",
-      "يضع العريس يده اليمنى في جيب البنطلون.",
-      "ترفع العروس يدها لتمسك بطية سترة العريس الرمادية بلطف.",
-      "تظهر تفاصيل الصديري المنقوش وربطة العنق الفضية في المنتصف.",
-      "تبقى باقة الزهور ممسوكة باليد الأخرى أسفل الصدر."
-    ],
-    "stepsEn": [
-      "Couple stands closely facing one another.",
-      "Groom places his right hand into trouser pocket.",
-      "Bride raises her hand to smooth groom's gray lapel.",
-      "Patterned vest and silver tie remain centered.",
-      "Bride holds daisy bouquet low with other hand."
-    ],
-    "photographerTips": {
-      "angleAr": "مستوى الصدر",
-      "angleEn": "Chest-level",
-      "lensMm": "85mm",
-      "distanceAr": "1 متر",
-      "distanceEn": "1m",
-      "lightingAr": "إضاءة ناعمة تبرز قماش البدلة",
-      "lightingEn": "Soft light highlighting suit texture",
-      "compositionAr": "خطوط قطرية بين ذراع العروس وطية السترة",
-      "compositionEn": "Diagonal leading lines",
-      "suggestedAperture": "f/2.8",
-      "suggestedShutter": "1/320s"
-    },
-    "propsAr": ["بدلة رمادية ثلاثية بصديري منقوش", "باقة أقحوان"],
-    "propsEn": ["Light-gray 3-piece suit", "Daisy bouquet"],
-    "commonMistakesAr": ["تغطية اليد لربطة العنق.", "شد طية السترة بقوة."],
-    "commonMistakesEn": ["Covering tie knot.", "Pulling lapel tightly."],
-    "directorCueAr": "ضعي يدك بنعومة على طية سترته وكأنك ترتبينها له قبل الدخول إلى القاعة.",
-    "directorCueEn": "Gently smooth his jacket lapel with your fingertips.",
-    "illustrationSpec": {
-      "framing": "Tight chest-and-hands detail crop",
-      "figuresPosition": "Bride hand on groom gray lapel",
-      "colorPalette": ["#2F343A", "#C8C9CD", "#FFFFFF", "#FCE0D2"],
-      "backgroundTint": "SAND"
-    },
-    "imageGenerationPrompt": "Flat vector detail bride adjusting groom lapel on #2F343A."
   }
 ]
 """,
 
-    "app/src/main/java/com/kadr/poses/KadrApplication.kt": """package com.kadr.poses
+    "app/src/main/java/com/kadr/poses/KadrApplication.kt": r"""package com.kadr.poses
 
 import android.app.Application
 import dagger.hilt.android.HiltAndroidApp
@@ -955,7 +570,7 @@ class KadrApplication : Application() {
 }
 """,
 
-    "app/src/main/java/com/kadr/poses/domain/DomainLayer.kt": """package com.kadr.poses.domain
+    "app/src/main/java/com/kadr/poses/domain/DomainLayer.kt": r"""package com.kadr.poses.domain
 
 import androidx.compose.runtime.Immutable
 import kotlinx.coroutines.flow.Flow
@@ -1029,8 +644,6 @@ data class Pose(
     fun localizedDirectorCue(isArabic: Boolean) = if (isArabic) directorCueAr else directorCueEn
     fun localizedSteps(isArabic: Boolean) = if (isArabic) stepsAr else stepsEn
     fun localizedMistakes(isArabic: Boolean) = if (isArabic) commonMistakesAr else commonMistakesEn
-    fun localizedSilhouettes(isArabic: Boolean) = if (isArabic) bestForDressSilhouettesAr else bestForDressSilhouettesEn
-    fun localizedProps(isArabic: Boolean) = if (isArabic) propsAr else propsEn
 }
 
 @Immutable
@@ -1121,7 +734,7 @@ class GetFilteredPosesUseCase @Inject constructor(
 }
 """,
 
-    "app/src/main/java/com/kadr/poses/data/DataLayer.kt": """package com.kadr.poses.data
+    "app/src/main/java/com/kadr/poses/data/DataLayer.kt": r"""package com.kadr.poses.data
 
 import android.content.Context
 import androidx.datastore.preferences.core.booleanPreferencesKey
@@ -1234,15 +847,15 @@ data class ShotListEntryEntity(
 
 class KadrTypeConverters {
     private val json = Json { ignoreUnknownKeys = true }
-    @TypeConverter fun fromStrList(v: List<String>) = json.encodeToString(v)
+    @TypeConverter fun fromStrList(v: List<String>): String = json.encodeToString(v)
     @TypeConverter fun toStrList(v: String): List<String> = json.decodeFromString(v)
-    @TypeConverter fun fromMoods(v: List<PoseMood>) = json.encodeToString(v)
+    @TypeConverter fun fromMoods(v: List<PoseMood>): String = json.encodeToString(v)
     @TypeConverter fun toMoods(v: String): List<PoseMood> = json.decodeFromString(v)
-    @TypeConverter fun fromLocs(v: List<PoseLocation>) = json.encodeToString(v)
+    @TypeConverter fun fromLocs(v: List<PoseLocation>): String = json.encodeToString(v)
     @TypeConverter fun toLocs(v: String): List<PoseLocation> = json.decodeFromString(v)
-    @TypeConverter fun fromTips(v: PhotographerTips) = json.encodeToString(v)
+    @TypeConverter fun fromTips(v: PhotographerTips): String = json.encodeToString(v)
     @TypeConverter fun toTips(v: String): PhotographerTips = json.decodeFromString(v)
-    @TypeConverter fun fromSpec(v: IllustrationSpec) = json.encodeToString(v)
+    @TypeConverter fun fromSpec(v: IllustrationSpec): String = json.encodeToString(v)
     @TypeConverter fun toSpec(v: String): IllustrationSpec = json.decodeFromString(v)
 }
 
@@ -1312,7 +925,7 @@ class PoseRepositoryImpl @Inject constructor(
                     val listId = shotListDao.insertShotList(
                         ShotListEntity(title = "جلسة الساعة الذهبية • Golden Hour", createdAt = System.currentTimeMillis())
                     )
-                    entities.take(4).forEachIndexed { idx, p ->
+                    entities.take(3).forEachIndexed { idx, p ->
                         shotListDao.insertEntry(ShotListEntryEntity(listId = listId, poseId = p.id, sortOrder = idx))
                     }
                 }
@@ -1396,7 +1009,7 @@ class SettingsRepositoryImpl @Inject constructor(
 }
 """,
 
-    "app/src/main/java/com/kadr/poses/di/AppModule.kt": """package com.kadr.poses.di
+    "app/src/main/java/com/kadr/poses/di/AppModule.kt": r"""package com.kadr.poses.di
 
 import android.content.Context
 import androidx.room.Room
@@ -1435,7 +1048,7 @@ abstract class RepositoryModule {
 }
 """,
 
-    "app/src/main/java/com/kadr/poses/ui/theme/ThemeLayer.kt": """package com.kadr.poses.ui.theme
+    "app/src/main/java/com/kadr/poses/ui/theme/ThemeLayer.kt": r"""package com.kadr.poses.ui.theme
 
 import androidx.compose.foundation.isSystemInDarkTheme
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -1576,7 +1189,7 @@ object KadrThemeTokens {
 }
 """,
 
-    "app/src/main/java/com/kadr/poses/ui/components/CoreComponents.kt": """package com.kadr.poses.ui.components
+    "app/src/main/java/com/kadr/poses/ui/components/CoreComponents.kt": r"""package com.kadr.poses.ui.components
 
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
@@ -1854,7 +1467,7 @@ fun EmptyStateView(
 }
 """,
 
-    "app/src/main/java/com/kadr/poses/ui/screens/ScreensLayer.kt": """package com.kadr.poses.ui.screens
+    "app/src/main/java/com/kadr/poses/ui/screens/ScreensLayer.kt": r"""package com.kadr.poses.ui.screens
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatDelegate
@@ -2191,7 +1804,7 @@ fun PoseDetailScreen(
                 actions = {
                     IconButton(onClick = {
                         val send = Intent(Intent.ACTION_SEND).apply {
-                            putExtra(Intent.EXTRA_TEXT, "${pose.localizedName(isArabic)}\n${pose.localizedDirectorCue(isArabic)}")
+                            putExtra(Intent.EXTRA_TEXT, "${pose.localizedName(isArabic)} - ${pose.localizedDirectorCue(isArabic)}")
                             type = "text/plain"
                         }
                         context.startActivity(Intent.createChooser(send, null))
@@ -2378,7 +1991,7 @@ fun SettingsScreen(vm: KadrMainViewModel, onBackClick: () -> Unit) {
 }
 """,
 
-    "app/src/main/java/com/kadr/poses/MainActivity.kt": """package com.kadr.poses
+    "app/src/main/java/com/kadr/poses/MainActivity.kt": r"""package com.kadr.poses
 
 import android.os.Bundle
 import androidx.activity.compose.setContent
